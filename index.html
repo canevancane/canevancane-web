@@ -42,6 +42,7 @@
                     
                     const titleLink = document.createElement('a');
                     titleLink.textContent = item.Title;
+                    titleLink.href = item.path;
                     
                     const titleElement = document.createElement('h4');
                     titleElement.appendChild(titleLink);
@@ -50,10 +51,10 @@
                     
                     const descriptionLink = document.createElement('a');
                     descriptionLink.textContent = item.descrp;
+                    descriptionLink.href = item.path;
                     
                     const descriptionElement = document.createElement('p');
                     descriptionElement.appendChild(descriptionLink);
-                    descriptionElement.href = item.path;
                     descriptionElement.classList.add('paragraph-home');
                     
                     const imageLink = document.createElement('a');

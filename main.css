@@ -185,15 +185,15 @@ a {
     text-decoration: none;
 }
 a:hover {
-    color: lightblue; /* Change link color on hover */
+    color: inherit; /* Change link color on hover */
 }
 /* Additional styles for visited links */
 a:visited {
-    color: white; /* Color for visited links */
+    color: inherit; /* Color for visited links */
 }
 /* Additional styles for active links */
 a:active {
-    color: white; /* Color for active links */
+    color: inherit; /* Color for active links */
 }
 /*Footer*/
 footer {
