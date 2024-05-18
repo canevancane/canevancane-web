@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untitled Document</title>
+<link href="main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="header-mobile"><a href="home.html">CANÉ</a></div>
+<div class="header"><a href="home.html">CANÉ VAN CANE</a></div>
+    <div>
+    <h4 class="head-start">COFFEE-TABLE BOOKS</h4>
+    <p class="paragraph"><i>Willkommen zu unserer exquisiten Auswahl an Coffeetable-Büchern – einer Sammlung fesselnder Werke, die nicht nur deine Kaffeetischlandschaft bereichern, sondern auch deine Sinne beflügeln werden. Tauche ein in die faszinierende Welt der Kunst, des Designs und der Kultur mit diesen meisterhaft gestalteten Büchern, die nicht nur deine Gäste beeindrucken werden, sondern auch eine Quelle der Inspiration für dich selbst sind. Von ikonischen Künstlern bis hin zu revolutionären Designern bieten diese Bücher einen einzigartigen Einblick in die vielfältige und inspirierende Welt der visuellen Kunst.</i></p>
+    </div>
+    
+<div id="products"></div>
+<script>
+fetch('https://gist.githubusercontent.com/canevancane/0b5b44811d24e62fe47fdf274b28a346/raw/f01e7279e6d3e63d130313a95d1e18f83aeccd28/Design_Books_Recommendatios_05_2024.json')
+  .then(response => response.json())
+  .then(data => {
+    const productsContainer = document.getElementById('products');
+    data.forEach(product => {
+      const productDiv = document.createElement('div');
+      productDiv.classList.add('product-item'); // Add a class for styling
+      
+      const title = document.createElement('h4');
+      title.textContent = product.Titel;
+      title.classList.add('ueberschrift');
+      
+      const subtitle = document.createElement('h5');
+      subtitle.textContent = product.Subtitel;
+      subtitle.classList.add('subhead');
+        
+      const price = document.createElement('p');
+      price.textContent = product.Preis;
+      price.classList.add('price');
+      
+      const description = document.createElement('p');
+      description.textContent = product.Beschreibung;
+      description.classList.add('paragraph');
+      
+        const imageContainer = document.createElement('div');
+      imageContainer.classList.add('image-container'); // Add a class for styling
+        
+      const image = document.createElement('img');
+      image.src = product.Image_Link;
+      image.alt = product.Titel;
+      image.classList.add('prod_img');
+      
+        imageContainer.appendChild(image);
+        
+      const amazonLinkContainer = document.createElement('div');
+        
+        // Create a container for the kaufen link
+      amazonLinkContainer.classList.add('button-container'); // Add a class for styling
+      
+      const amazonLink = document.createElement('a');
+      amazonLink.href = product.Amazon_Link;
+      amazonLink.textContent = "Kaufen";
+      amazonLink.classList.add('kaufen');
+      
+      amazonLinkContainer.appendChild(amazonLink); // Append the link to the container
+      
+        const hr = document.createElement('hr')
+        hr.classList.add('hr-inpage')
+        
+    productDiv.appendChild(hr);
+      productDiv.appendChild(title);
+      productDiv.appendChild(subtitle);
+      productDiv.appendChild(price);
+      productDiv.appendChild(imageContainer);
+      productDiv.appendChild(amazonLinkContainer);
+        productDiv.appendChild(description);// Append the link container to the product container
+      
+      productsContainer.appendChild(productDiv);
+    });
+  });
+</script>
+
+
+<!--<nav class="nav-top">
+    <p>
+    <a href="#">Geschenke</a>
+        -
+    <a href="#">Blog</a>
+        -
+    <a href="#">Empehlungen</a>
+    </p>
+    </nav>-->
+
+<footer>
+    <p>2024 - Vincent Becker</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>index</title>
+<link href="main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="header-mobile">CANÉ</div>
+<div class="header">CANÉ VAN CANE</div>
+<h4 class="head-start">HOME</h4>
+    <div class="empty-box"></div>
+    <div class="ueber">
+    <h3>Über Cané van Cane:</h3>
+    <p>Auf Cané van Cane findest du alles zum Thema Design. Die besten Produkte werden hier vorgestellt, und du kannst dir einen Überblick verschaffen, was du dir als nächstes für deine Wohnung zulegst. Von Inneneinrichtung über Möbel bis hin zu Architektur - auf Cané van Cane findest du alles, was das Designliebhaberherz begehrt.</p>
+</div>
+    <div class="empty-box"></div>
+    <h4 class="ueberueberschrift">Artikel Übersicht:</h4>
+    <div id="data-container"></div>
+    
+    <script>
+        // Fetch the JSON data
+        fetch('Overview_articles.json')
+            .then(response => response.json())
+            .then(data => {
+                // Get the container where data will be displayed
+                const container = document.getElementById('data-container');
+
+                // Loop through each item in the JSON array
+                data.forEach(item => {
+                    
+                    // Create elements to display title and image
+                    const imageElement = document.createElement('img');
+                    imageElement.src = item.img;
+                    imageElement.alt = item.Title;
+                    imageElement.classList.add('prod_img');
+                    
+                    const titleLink = document.createElement('a');
+                    titleLink.textContent = item.Title;
+                    
+                    const titleElement = document.createElement('h4');
+                    titleElement.appendChild(titleLink);
+                    titleElement.classList.add('ueberschrift');
+                    
+                    const descriptionLink = document.createElement('a');
+                    descriptionLink.textContent = item.descrp;
+                    
+                    const descriptionElement = document.createElement('p');
+                    descriptionElement.appendChild(descriptionLink);
+                    descriptionElement.classList.add('paragraph-home');
+                    
+                    const imageLink = document.createElement('a');
+                    imageLink.href = item.path;
+                    
+                    imageLink.appendChild(imageElement);
+                    imageLink.classList.add('image-container');
+                    
+                    const image = document.createElement('div');
+                    image.classList.add('image-container');
+                    
+                    image.appendChild(imageLink);
+                    
+                    const hr = document.createElement('hr')
+                    hr.classList.add('hr-homepage')
+        
+                    container.appendChild(hr);
+                    // Append elements to the container
+                    container.appendChild(image);
+                    container.appendChild(titleElement);
+                    container.appendChild(descriptionElement);
+                    
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching JSON data:', error);
+            });
+    </script>
+<footer>
+    <p>2024 - CANÉ VAN CANE </p>
+    <p>canevancane@protonmail.com</p>
+</footer>
+</body>
+</html>
