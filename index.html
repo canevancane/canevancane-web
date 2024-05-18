@@ -45,6 +45,7 @@
                     
                     const titleElement = document.createElement('h4');
                     titleElement.appendChild(titleLink);
+                    titleElement.href = item.path;
                     titleElement.classList.add('ueberschrift');
                     
                     const descriptionLink = document.createElement('a');
@@ -52,6 +53,7 @@
                     
                     const descriptionElement = document.createElement('p');
                     descriptionElement.appendChild(descriptionLink);
+                    descriptionElement.href = item.path;
                     descriptionElement.classList.add('paragraph-home');
                     
                     const imageLink = document.createElement('a');
