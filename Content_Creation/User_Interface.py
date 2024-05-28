@@ -200,6 +200,26 @@ def create_website():
         with open(path_to_save, 'w') as f:
             f.write(html)
 
+        # append to JSON overview of Websites
+        with open("Assets/Overview_articles.json", "r") as file:
+            data_existing = json.load(file)
+
+        # Create a new object
+        new_data = {
+            "Title": web_title,
+            "img": web_image_link,
+            "descrp": web_description,
+            "path": path_to_save
+        }
+
+        # Append the new object to the data
+        data_existing.append(new_data)
+
+        # Write the updated data to the file
+        with open("Assets/Overview_articles.json", 'w') as file:
+            json.dump(data_existing, file, indent=4)
+
+        print("Website appended successfully!")
     
 
 
@@ -254,12 +274,14 @@ label_web_image_link = Label(root, text="Image Link Webs.", font=("bold",))
 entry_web_image_link = Entry(root, width=50)
 
 # path to website
-label_web_path = Label(root, text="Path Webs.", font=("bold",))
+label_web_path = Label(root, text="Name of HTML file", font=("bold",))
 entry_web_path = Entry(root, width=50)
+entry_web_path.insert(0, entry_web_title.get())
 
 # underlying json file name
-label_web_json_file = Label(root, text="JSON file name", font=("bold",))
+label_web_json_file = Label(root, text="Name of JSON file", font=("bold",))
 entry_web_json_file = Entry(root, width=50)
+entry_web_json_file.insert(0, entry_json_name.get())
 
 # create website button
 button_create_website = Button(root, text="Create Website", command=create_website)

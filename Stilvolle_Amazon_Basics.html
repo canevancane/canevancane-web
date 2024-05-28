@@ -1,0 +1,86 @@
+
+        <!doctype html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CANÉ VAN CANE</title>
+        <link href="main.css" rel="stylesheet" type="text/css">
+        </head>
+
+        <body>
+        <div class="header-mobile"><a href="index.html">CANÉ</a></div>
+        <div class="header"><a href="index.html">CANÉ VAN CANE</a></div>
+            <div>
+            <h4 class="head-start">5 Stilvolle Amazon Basics</h4>
+            <p class="paragraph"><i>Amazon ist schon seit langem kein reiner Versandhandel mehr, sondern produziert auch brilliante und preiswerte Produkte selber. Fünf besonders schöne von diesen sind in dieser Liste aufgezählt.
+
+</i></p>
+            </div>
+            
+        <div id="products"></div>
+        <script>
+        fetch('Assets/Stilvolle_Amazon_Basics')
+        .then(response => response.json())
+        .then(data => {
+            const productsContainer = document.getElementById('products');
+            data.forEach(product => {
+            const productDiv = document.createElement('div');
+            productDiv.classList.add('product-item'); // Add a class for styling
+            
+            const title = document.createElement('h4');
+            title.textContent = product.Titel;
+            title.classList.add('ueberschrift');
+            
+            const subtitle = document.createElement('h5');
+            subtitle.textContent = product.Subtitel;
+            subtitle.classList.add('subhead');
+                
+            const price = document.createElement('p');
+            price.textContent = product.Preis;
+            price.classList.add('price');
+            
+            const description = document.createElement('p');
+            description.textContent = product.Beschreibung;
+            description.classList.add('paragraph');
+            
+                const imageContainer = document.createElement('div');
+            imageContainer.classList.add('image-container'); // Add a class for styling
+                
+            const image = document.createElement('img');
+            image.src = product.Image_Link;
+            image.alt = product.Titel;
+            image.classList.add('prod_img');
+            
+                imageContainer.appendChild(image);
+                
+            const amazonLinkContainer = document.createElement('div'); // Create a container for the kaufen link
+            amazonLinkContainer.classList.add('button-container'); // Add a class for styling
+            
+            const amazonLink = document.createElement('a');
+            amazonLink.href = product.Amazon_Link;
+            amazonLink.textContent = "Kaufen";
+            amazonLink.classList.add('kaufen');
+            
+            amazonLinkContainer.appendChild(amazonLink); // Append the link to the container
+            
+            productDiv.appendChild(title);
+            productDiv.appendChild(subtitle);
+            productDiv.appendChild(price);
+            productDiv.appendChild(imageContainer);
+            productDiv.appendChild(amazonLinkContainer);
+                productDiv.appendChild(description);// Append the link container to the product container
+            
+            productsContainer.appendChild(productDiv);
+            });
+        });
+        </script>
+        <footer>
+            <p>2024 - CANÉ VAN CANE</p>
+        </footer>
+        </body>
+        </html>
+        
