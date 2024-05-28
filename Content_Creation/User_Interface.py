@@ -281,7 +281,7 @@ entry_web_path.insert(0, entry_web_title.get())
 # underlying json file name
 label_web_json_file = Label(root, text="Name of JSON file", font=("bold",))
 entry_web_json_file = Entry(root, width=50)
-entry_web_json_file.insert(0, entry_json_name.get())
+entry_web_json_file.insert(0, ".json")
 
 # create website button
 button_create_website = Button(root, text="Create Website", command=create_website)
