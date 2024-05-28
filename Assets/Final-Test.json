@@ -1,0 +1,18 @@
+[
+    {
+        "Titel": "Hallo",
+        "Subtitel": "This",
+        "Beschreibung": "Is\n",
+        "Preis": "A",
+        "Image_Link": "final",
+        "Amazon_Link": "test"
+    },
+    {
+        "Titel": "We",
+        "Subtitel": "will",
+        "Beschreibung": "see\n",
+        "Preis": "how",
+        "Image_Link": "it ",
+        "Amazon_Link": "goes"
+    }
+]
